@@ -15,3 +15,19 @@ export const getCategories = async (
   const posts = await apiRequest<Category[]>(url);
   return posts;
 };
+
+export const getCategoryTotalPages = async (
+  wpApiUrl: string,
+  category: string,
+  perPage: number = 10
+): Promise<number> => {
+  try {
+    const posts = await fetch(
+      `${wpApiUrl}/posts?categories=${category}&per_page=${perPage}`
+    );
+    const totalPages = Number(posts.headers.get("x-wp-totalpages"));
+    return totalPages;
+  } catch (e) {
+    throw new Error(`Error: ${e}`);
+  }
+};

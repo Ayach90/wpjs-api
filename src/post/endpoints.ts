@@ -18,12 +18,12 @@ export const getPosts = async (
 
 export const getTotalPages = async (
   wpApiUrl: string,
-  per_page: number = 10
+  perPage: number = 10
 ): Promise<number> => {
   try {
-    const posts = await fetch(`${wpApiUrl}/posts`);
-    const totalPosts = Number(posts.headers.get("X-WP-Total"));
-    return Math.ceil(totalPosts / per_page);
+    const posts = await fetch(`${wpApiUrl}/posts?per_page=${perPage}`);
+    const totalPages = Number(posts.headers.get("x-wp-totalpages"));
+    return totalPages;
   } catch (e) {
     throw new Error(`Error: ${e}`);
   }
