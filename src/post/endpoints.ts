@@ -1,10 +1,7 @@
 import { apiRequest } from "../utils";
 import { Post, PostFilters } from "./types";
 
-export const getPosts = async (
-  wpApiUrl: string | undefined,
-  filters: PostFilters = {}
-) => {
+export const getPosts = async (wpApiUrl: string, filters: PostFilters = {}) => {
   let url = `${wpApiUrl}/posts?`;
   for (const key in filters) {
     if (Object.prototype.hasOwnProperty.call(filters, key)) {

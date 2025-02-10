@@ -2,7 +2,7 @@ import { apiRequest } from "../utils";
 import { Category, CategoryFilters } from "./types";
 
 export const getCategories = async (
-  wpApiUrl: string | undefined,
+  wpApiUrl: string,
   filters: CategoryFilters = {}
 ) => {
   let url = `${wpApiUrl}/categories?`;
