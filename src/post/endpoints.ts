@@ -9,7 +9,7 @@ export const getPosts = async (wpApiUrl: string, filters: PostFilters = {}) => {
     }
   }
   url = url.slice(0, -1);
-  const posts = await apiRequest<Post[]>(url);
+  const posts = await apiRequest<Post[]>({ url });
   return posts;
 };
 

@@ -1,3 +1,5 @@
+import { YoastHeadJson } from "../category";
+
 export interface PostFilters {
   _fields?: string[];
   after?: string;
@@ -75,38 +77,6 @@ interface RenderedContent {
 interface PostMeta {
   _acf_changed: boolean;
   footnotes: string;
-}
-
-interface YoastImage {
-  height: number;
-  type: string;
-  url: string;
-  width: number;
-}
-
-interface YoastHeadJson {
-  article_modified_time: string;
-  article_published_time: string;
-  author: string;
-  canonical: string;
-  og_image: YoastImage[];
-  og_locale: string;
-  og_site_name: string;
-  og_title: string;
-  og_type: string;
-  og_url: string;
-  robots: {
-    index: string;
-    follow: string;
-    "max-snippet": string;
-    "max-image-preview": string;
-    "max-video-preview": string;
-  };
-  title: string;
-  twitter_card: string;
-  twitter_misc: {
-    [key: string]: string;
-  };
 }
 
 interface WPLinks {

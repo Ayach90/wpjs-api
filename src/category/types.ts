@@ -36,6 +36,13 @@ export interface Category {
   acf: { bgColor: string; textColor: string };
 }
 
+interface YoastImage {
+  height: number;
+  type: string;
+  url: string;
+  width: number;
+}
+
 export interface YoastHeadJson {
   title: string;
   robots: {
@@ -48,11 +55,16 @@ export interface YoastHeadJson {
   canonical: string;
   og_locale: string;
   og_type: string;
+  og_description: string;
   og_title: string;
   og_url: string;
   og_site_name: string;
   twitter_card: string;
   schema: Schema;
+  article_modified_time: string;
+  article_published_time: string;
+  author: string;
+  og_image: YoastImage[];
 }
 
 export interface Schema {

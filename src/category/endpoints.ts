@@ -12,7 +12,7 @@ export const getCategories = async (
     }
   }
   url = url.slice(0, -1);
-  const posts = await apiRequest<Category[]>(url);
+  const posts = await apiRequest<Category[]>({ url });
   return posts;
 };
 
