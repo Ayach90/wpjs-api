@@ -10,11 +10,11 @@ export const getMenus = async ({
   options = {},
   menusIds,
 }: GetMenusParams) => {
-  const headerMenu = await apiRequest<WPMenuItem>({
+  const headerMenu = await apiRequest<WPMenuItem[]>({
     url: `${url}/menu-items?menus=${menusIds.header}`,
     options,
   });
-  const footerMenu = await apiRequest<WPMenuItem>({
+  const footerMenu = await apiRequest<WPMenuItem[]>({
     url: `${url}/menu-items?menus=${menusIds.footer}`,
     options,
   });
