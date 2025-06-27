@@ -1,7 +1,8 @@
-import { YoastHeadJson } from "../category";
+import { WPYoastHeadJson } from "../types";
 
-export interface PostFilters {
+export interface WPPostFilters {
   _fields?: string[];
+  _embed?: string;
   after?: string;
   author_exclude?: number;
   author?: number;
@@ -34,7 +35,7 @@ export interface PostFilters {
   status?: "publish" | "future" | "draft" | "pending" | "private";
 }
 
-export interface Post {
+export interface WPPost {
   _links: WPLinks;
   categories: number[];
   class_list: string[];
@@ -61,7 +62,7 @@ export interface Post {
   template: string;
   title: RenderedContent;
   type: string;
-  yoast_head_json: YoastHeadJson;
+  yoast_head_json: WPYoastHeadJson;
   yoast_head: string;
 }
 

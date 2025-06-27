@@ -1,4 +1,6 @@
-export interface CategoryFilters {
+import { WPYoastHeadJson } from "../types";
+
+export interface WPCategoryFilters {
   context?: "view" | "embed" | "edit";
   page?: number;
   per_page?: number;
@@ -21,7 +23,7 @@ export interface CategoryFilters {
   slug?: string;
 }
 
-export interface Category {
+export interface WPCategory {
   id: number;
   count: number;
   description: string;
@@ -31,85 +33,12 @@ export interface Category {
   taxonomy: string;
   parent: number;
   yoast_head: string;
-  yoast_head_json: YoastHeadJson;
+  yoast_head_json: WPYoastHeadJson;
   _links: Links;
   acf: { bgColor: string; textColor: string };
 }
 
-interface YoastImage {
-  height: number;
-  type: string;
-  url: string;
-  width: number;
-}
-
-export interface YoastHeadJson {
-  title: string;
-  robots: {
-    index: string;
-    follow: string;
-    "max-snippet": string;
-    "max-image-preview": string;
-    "max-video-preview": string;
-  };
-  canonical: string;
-  og_locale: string;
-  og_type: string;
-  og_description: string;
-  og_title: string;
-  og_url: string;
-  og_site_name: string;
-  twitter_card: string;
-  schema: Schema;
-  article_modified_time: string;
-  article_published_time: string;
-  author: string;
-  og_image: YoastImage[];
-}
-
-export interface Schema {
-  "@context": string;
-  "@graph": SchemaGraphItem[];
-}
-
-export interface SchemaGraphItem {
-  "@type": string;
-  "@id": string;
-  url?: string;
-  name?: string;
-  isPartOf?: {
-    "@id": string;
-  };
-  breadcrumb?: {
-    "@id": string;
-  };
-  inLanguage?: string;
-  itemListElement?: ListItem[];
-  potentialAction?: PotentialAction[];
-  description?: string;
-}
-
-export interface ListItem {
-  "@type": string;
-  position: number;
-  name: string;
-  item?: string;
-}
-
-export interface PotentialAction {
-  "@type": string;
-  target: {
-    "@type": string;
-    urlTemplate: string;
-  };
-  "query-input": {
-    "@type": string;
-    valueRequired: boolean;
-    valueName: string;
-  };
-}
-
-export interface Links {
+interface Links {
   self: LinkItem[];
   collection: LinkItem[];
   about: LinkItem[];
@@ -117,14 +46,14 @@ export interface Links {
   curies: CuriesItem[];
 }
 
-export interface LinkItem {
+interface LinkItem {
   href: string;
   targetHints?: {
     allow: string[];
   };
 }
 
-export interface CuriesItem {
+interface CuriesItem {
   name: string;
   href: string;
   templated: boolean;

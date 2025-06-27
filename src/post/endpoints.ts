@@ -1,19 +1,22 @@
 import { apiRequest } from "../utils";
-import { Post, PostFilters } from "./types";
+import { WPPost, WPPostFilters } from "./types";
 
-export const getPosts = async (wpApiUrl: string, filters: PostFilters = {}) => {
+export const getPosts = async (
+  wpApiUrl: string,
+  filters: WPPostFilters = {}
+) => {
   let url = `${wpApiUrl}/posts?`;
   for (const key in filters) {
     if (Object.prototype.hasOwnProperty.call(filters, key)) {
-      url += `${key}=${filters[key as keyof PostFilters]}&`;
+      url += `${key}=${filters[key as keyof WPPostFilters]}&`;
     }
   }
   url = url.slice(0, -1);
-  const posts = await apiRequest<Post[]>({ url });
+  const posts = await apiRequest<WPPost[]>({ url });
   return posts;
 };
 
-export const getTotalPages = async (
+export const getTotalPagesPagination = async (
   wpApiUrl: string,
   perPage: number = 10
 ): Promise<number> => {

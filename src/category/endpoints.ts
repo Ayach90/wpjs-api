@@ -1,18 +1,18 @@
 import { apiRequest } from "../utils";
-import { Category, CategoryFilters } from "./types";
+import { WPCategory, WPCategoryFilters } from "./types";
 
 export const getCategories = async (
   wpApiUrl: string,
-  filters: CategoryFilters = {}
+  filters: WPCategoryFilters = {}
 ) => {
   let url = `${wpApiUrl}/categories?`;
   for (const key in filters) {
     if (Object.prototype.hasOwnProperty.call(filters, key)) {
-      url += `${key}=${filters[key as keyof CategoryFilters]}&`;
+      url += `${key}=${filters[key as keyof WPCategoryFilters]}&`;
     }
   }
   url = url.slice(0, -1);
-  const posts = await apiRequest<Category[]>({ url });
+  const posts = await apiRequest<WPCategory[]>({ url });
   return posts;
 };
 

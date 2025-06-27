@@ -1,6 +1,6 @@
-import { YoastHeadJson } from "../category";
+import { WPYoastHeadJson } from "../types";
 
-export interface PageFilters {
+export interface WPPageFilters {
   _fields?: string[];
   after?: string;
   author_exclude?: number;
@@ -67,7 +67,7 @@ export interface WPPage {
   template: string;
   permalink_template?: string;
   generated_slug?: string;
-  yoast_head_json: YoastHeadJson;
+  yoast_head_json: WPYoastHeadJson;
   yoast_head: string;
   acf?: Record<string, any>;
 }
