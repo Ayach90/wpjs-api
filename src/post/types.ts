@@ -36,27 +36,43 @@ export interface WPPostFilters {
 }
 
 export interface WPPost {
+  _embedded?: {
+    "wp:term": Array<Array<{ id: number; slug: string; taxonomy: string }>>;
+  };
   _links: WPLinks;
   categories: number[];
+  categories_data: CategoryData[];
+
   class_list: string[];
   comment_status: string;
   content: RenderedContent;
   date_gmt: string;
   date: string;
   excerpt: RenderedContent;
-  featured_image_alt: string;
-  featured_image_url: string;
+  featured_image: {
+    url: string;
+    alt: string;
+  } | null;
   featured_media: number;
-  format: string;
+  format:
+    | "standard"
+    | "aside"
+    | "gallery"
+    | "link"
+    | "image"
+    | "quote"
+    | "status"
+    | "video"
+    | "audio";
   guid: Guid;
   id: number;
   link: string;
   meta: PostMeta;
   modified_gmt: string;
   modified: string;
-  ping_status: string;
+  ping_status: "open" | "closed";
   slug: string;
-  status: string;
+  status: "publish" | "draft" | "future" | "pending" | "private";
   sticky: boolean;
   tags: number[];
   template: string;
@@ -73,6 +89,13 @@ interface Guid {
 interface RenderedContent {
   protected?: boolean;
   rendered: string;
+}
+
+interface CategoryData {
+  id: number;
+  name: string;
+  slug: string;
+  url: string;
 }
 
 interface PostMeta {
