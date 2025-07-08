@@ -35,51 +35,65 @@ export interface WPPostFilters {
   status?: "publish" | "future" | "draft" | "pending" | "private";
 }
 
+export interface WPAuthorInfo {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+  link: string;
+  slug: string;
+  avatar_urls: {
+    24: string;
+    48: string;
+    96: string;
+  };
+}
+
 export interface WPPost {
   _embedded?: {
     "wp:term": Array<Array<{ id: number; slug: string; taxonomy: string }>>;
+    author: Array<WPAuthorInfo>;
+    _links: WPLinks;
+    categories: number[];
+    categories_data: CategoryData[];
+    class_list: string[];
+    comment_status: string;
+    content: RenderedContent;
+    date_gmt: string;
+    date: string;
+    excerpt: RenderedContent;
+    featured_image: {
+      url: string;
+      alt: string;
+    } | null;
+    featured_media: number;
+    format:
+      | "standard"
+      | "aside"
+      | "gallery"
+      | "link"
+      | "image"
+      | "quote"
+      | "status"
+      | "video"
+      | "audio";
+    guid: Guid;
+    id: number;
+    link: string;
+    meta: PostMeta;
+    modified_gmt: string;
+    modified: string;
+    ping_status: "open" | "closed";
+    slug: string;
+    status: "publish" | "draft" | "future" | "pending" | "private";
+    sticky: boolean;
+    tags: number[];
+    template: string;
+    title: RenderedContent;
+    type: string;
+    yoast_head_json: WPYoastHeadJson;
+    yoast_head: string;
   };
-  _links: WPLinks;
-  categories: number[];
-  categories_data: CategoryData[];
-
-  class_list: string[];
-  comment_status: string;
-  content: RenderedContent;
-  date_gmt: string;
-  date: string;
-  excerpt: RenderedContent;
-  featured_image: {
-    url: string;
-    alt: string;
-  } | null;
-  featured_media: number;
-  format:
-    | "standard"
-    | "aside"
-    | "gallery"
-    | "link"
-    | "image"
-    | "quote"
-    | "status"
-    | "video"
-    | "audio";
-  guid: Guid;
-  id: number;
-  link: string;
-  meta: PostMeta;
-  modified_gmt: string;
-  modified: string;
-  ping_status: "open" | "closed";
-  slug: string;
-  status: "publish" | "draft" | "future" | "pending" | "private";
-  sticky: boolean;
-  tags: number[];
-  template: string;
-  title: RenderedContent;
-  type: string;
-  yoast_head_json: WPYoastHeadJson;
-  yoast_head: string;
 }
 
 interface Guid {
